@@ -19,7 +19,7 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide
                     <p class="card-text"><?= $value['description'] ?></p>
                     <form action="../scripts/modification.php" class="text-center" method="post">
                         <input type="hidden" name="id_desac" id="id_desac" value="<?= $id ?>">
-                        <input class="btn btn-primary" name="activate" type="submit" value="Activer">
+                        <input class="btn " name="activate" type="submit" value="Activer">
                     </form>
                 </div>
             </div>

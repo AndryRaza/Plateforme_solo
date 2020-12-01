@@ -59,12 +59,12 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide, on va afficher chacu
                     <?php if (!$_SESSION['admin']) { ?>
                         <form action="scripts/acheter.php" method="POST">
                             <input type="hidden" name="id_produit" id="id_produit" value="<?= $id ?>">
-                            <input class="btn btn-primary w-100" name="acheter" type="submit" value="Acheter">
+                            <input class="btn w-100" name="acheter" type="submit" value="Acheter">
                         </form>
                     <?php } else { ?>
                         <form action="pages/formulaire_modification.php" method="POST">
                             <input type="hidden" name="id_produit" id="id_produit" value="<?= $id ?>">
-                            <input class="btn btn-primary  w-100" type="submit" name="modifier" value="Modifier">
+                            <input class="btn w-100" type="submit" name="modifier" value="Modifier">
                         </form>
                     <?php } ?>
                 </div>

@@ -1,5 +1,6 @@
 header{
     height:200px;
+    background-color:#81C784;
 }
 
 .barre{
@@ -27,4 +28,17 @@ a{
 li{
 font-size:20px;
 
+}
+
+nav{
+background-color: #ECF0F1;
+}
+
+.btn{
+    background-color : #FF9800;
+   color:white;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
 }
