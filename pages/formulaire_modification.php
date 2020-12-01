@@ -76,7 +76,7 @@
 
                     <div class="form-group row row-cols-md-2 row-cols-1">
                         <label class="col-md-3" for="aug_duree_modifie">Augmenter le temps de (en mn) :</label>
-                        <input type="number" class="form-control col-md-9" name="aug_duree_modifie" id="aug_duree_modifie" value="<?= $produit[$i]['time_up'] ?>" required min=1 step="0.01">
+                        <input type="number" class="form-control col-md-9" name="aug_duree_modifie" id="aug_duree_modifie" value="<?= $produit[$i]['time_up'] ?>" required min=0>
                     </div>
 
                     <div class="form-group d-flex justify-content-end">

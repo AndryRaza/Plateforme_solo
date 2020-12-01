@@ -5,13 +5,16 @@
 require 'classes/card.class.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
-    //Il manque la sécurité 
-    $content_dir = "D:\Formation\Projet-perso-enchere\assets\\"; //Chemin du dossier pour enregistrer nos images
+    $validExt = array('.jpg', '.jpeg', '.gif', '.png');
     $name_file = $_FILES['image_produit']['name']; //Nom de l'image
+    $fileExt = strtolower(substr(strrchr($name_file, '.'), 1));
+
+    if (in_array("." . $fileExt, $validExt)) {
+    $content_dir = "D:\Formation\Plateforme_solo\assets\\"; //Chemin du dossier pour enregistrer nos images
     $tmp_file = $_FILES['image_produit']['tmp_name']; //Fichier temporaire stocké sur l'ordi qui sera supprimé avec move
 
     move_uploaded_file($tmp_file, $content_dir . $name_file); //On place l'image dans le dossier
-
+    }
     $new_card = new Card(   //On crée un nouvel instance Card
         $_POST['nom_produit'],
         $_POST['description_produit'],

@@ -4,8 +4,8 @@
 
 //On enregistre puis on stock notre tableau des cartes désactivées 
 $liste_produit = json_decode(file_get_contents('../data/card.json'), true);
-if (!empty($liste_produit)) { //Si la liste n'est pas vide
-    foreach ($liste_produit as $id => $value) { //Pour chaque carte, on affichera sa carte
+
+foreach ($liste_produit as $id => $value) { //Pour chaque carte, on affichera sa carte
         if (!$value['active']) {
 ?>
 
@@ -25,10 +25,5 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide
             </div>
 <?php }
     }
-} else { //Sinon on affiche le message qu'il n'y a pas d'enchères désactivées
-    echo '<h3 class="text-center w-100 m-auto">';
-    echo 'Aucune enchère désactivée';
-    echo '</h3>';
-}
 
 ?>
