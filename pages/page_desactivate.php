@@ -18,21 +18,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light  ">
-        <?php if (!($_SESSION['admin'])) { ?>
-            <form class="co pt-3" action="scripts/connexion.php" method="POST">
-                <div class="form-group d-flex">
-                    <input type="text" class="form-control mr-2" name="user" id="user" placeholder="Nom d'utilisateur" required pattern="[a-zA-Z]+">
-                    <input type="password" class="form-control mr-2" name="pass" id="pass" placeholder="Mot de passe" required pattern="[a-zA-Z]+">
-                    <input type="submit" class="btn h-50" name="connexion" id="connexion" value="Se connecter">
-                </div>
-            </form>
-        <?php } else { ?>
-            <form class="co" action="scripts/connexion.php" method="POST">
-                Mode ADMIN
-                <input type="submit" class="btn mr-2" name="deconnexion" id="deconnexion" value="Se deconnecter">
-            </form>
-        <?php }
-        ?>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

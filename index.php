@@ -75,5 +75,29 @@ if (!isset($_SESSION['admin'])) {
         </div>
     </section>
 
+    <?php
+    //Cette partie sert à rafraichir les timers de chaque enchère
+    $list_produit = json_decode(file_get_contents('data/card.json'), true);
+    for ($x = 0; $x < count($list_produit); $x++) {
+
+
+
+    ?>
+
+
+        <script>
+            $(document).ready(function() {
+
+                function myFunction() {
+                    var myVar = setInterval(function() {
+                            $('<?php echo '#duree_' . $x ?>').load('index.php <?php echo '#duree_' . $x ?>');
+                    }, 1000);
+                };
+
+                myFunction();
+            })
+        </script>
+
+    <?php } ?>
 
 </body>
