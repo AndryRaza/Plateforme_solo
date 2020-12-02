@@ -1,5 +1,7 @@
 <?php
 
+/********************Partie pour gérer la vision du visiteur*************/
+
 include 'create_card.php';
 //On ouvre notre fichier contenant les produits pour pouvoir la parcourir et afficher chacune des cartes
 $liste_produit = json_decode(file_get_contents('data/card.json'), true);
@@ -21,7 +23,7 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide, on va afficher chacu
 
                     <p class="card-text text-center"><?= $value['description'] ?></p>
 
-                    <form action="scripts/acheter.php" method="POST">
+                    <form action="includes/acheter.php" method="POST">
                         <input type="hidden" name="id_produit" id="id_produit" value="<?= $id ?>">
                         <input class="btn w-100" name="acheter" type="submit" value="Acheter">
                     </form>

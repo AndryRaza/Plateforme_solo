@@ -48,7 +48,7 @@
     ?>
         <section class="container-fluid">
             <div class="container mt-5">
-                <form action="../scripts/modification.php" method="POST">
+                <form enctype="multipart/form-data" action="../includes/modification.php" method="POST">
                     <div class="form-group row row-cols-md-2 row-cols-1">
                         <label class="col-md-3 " for="nom_modifie">Nom du produit :</label>
                         <input type="text" class="form-control col-md-9" name="nom_modifie" id="nom_modifie" value="<?= $produit[$i]['nom'] ?>" required pattern="[a-zA-Z0-9 é è à ^ ' ]+">

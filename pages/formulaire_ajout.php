@@ -29,7 +29,7 @@
                         <a class="nav-link" href="../index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ajouter un produit <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="formulaire_ajout.php">Ajouter un produit <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="page_desactivate.php">Activer un produit</a>

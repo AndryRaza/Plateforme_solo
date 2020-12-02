@@ -32,7 +32,7 @@ if (!isset($_SESSION['card_cree'])) {
     <nav class="navbar navbar-expand-lg navbar-light">
         <?php if (!($_SESSION['admin'])) //On regarde si on est connecté en tant qu'admin ,si non on affiche les inputs de connexion
         { ?>
-            <form class="co pt-3" action="scripts/connexion.php" method="POST">
+            <form class="co pt-3" action="includes/connexion.php" method="POST">
                 <div class="form-group d-flex">
                     <input type="text" class="form-control mr-2" name="user" id="user" placeholder="Nom d'utilisateur" required pattern="[a-zA-Z]+">
                     <input type="password" class="form-control mr-2" name="pass" id="pass" placeholder="Mot de passe" required pattern="[a-zA-Z]+">
@@ -41,7 +41,7 @@ if (!isset($_SESSION['card_cree'])) {
             </form>
         <?php } else //si oui on peut afficher un bouton de déconnexion et le menu pour l'admin 
         { ?>
-            <form class="co" action="scripts/connexion.php" method="POST">
+            <form class="co" action="includes/connexion.php" method="POST">
                 Mode ADMIN
                 <input type="submit" class="btn mr-2" name="deconnexion" id="deconnexion" value="Se deconnecter">
             </form>
@@ -56,7 +56,7 @@ if (!isset($_SESSION['card_cree'])) {
                 <ul class="navbar-nav">
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="pages/formulaire_ajout.php">Ajouter un produit</a>
@@ -79,7 +79,7 @@ if (!isset($_SESSION['card_cree'])) {
             <?php if (!$_SESSION['admin']) { ?>
                 <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
 
-                    <?php include 'scripts/client.php' ?>
+                    <?php include 'includes/client.php' ?>
 
                 </div>
             <?php } else { ?>
@@ -91,7 +91,7 @@ if (!isset($_SESSION['card_cree'])) {
                             <th class="text-center" scope="col"></th>
                         </tr>
                     </thead>
-                    <?php include 'scripts/admin.php' ?>
+                    <?php include 'includes/admin.php' ?>
                 </table>
                 
             <?php } ?>

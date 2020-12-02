@@ -1,5 +1,7 @@
 <?php
 
+/********************Partie pour gérer la vision de l'administrateur*************/
+
 include 'create_card.php';
 
 $liste_produit = json_decode(file_get_contents('data/card.json'), true);

@@ -32,7 +32,7 @@
                         <a class="nav-link" href="formulaire_ajout.php">Ajouter un produit </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Activer un produit <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="page_desactivate.php">Activer un produit <span class="sr-only">(current)</span></a>
                     </li>
                 <?php } ?>
             </ul>
@@ -53,7 +53,7 @@
                             <th class="text-center" scope="col"></th>
                         </tr>
                     </thead>
-                    <?php include '../scripts/desactivate.php' ?>
+                    <?php include '../includes/desactivate.php' ?>
                 </table>
         </div>
     </section>
