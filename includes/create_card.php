@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
     if ($_FILES['image_produit']['name'] != '' and $_FILES['image_produit']['size'] < 100000000000000000) {
         
         $name_file = $_FILES['image_produit']['name']; //Nom de l'image
-        $content_dir = "D:\Formation\Plateforme_solo\assets\\"; //Chemin du dossier pour enregistrer nos images
+        $content_dir = "assets/"; //Chemin du dossier pour enregistrer nos images
         $tmp_file = $_FILES['image_produit']['tmp_name']; //Fichier temporaire stocké sur l'ordi qui sera supprimé avec move
 
         move_uploaded_file($tmp_file, $content_dir . $name_file); //On place l'image dans le dossier
@@ -53,5 +53,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
     //Et pour finir, on enregistre le tout
     file_put_contents('data/card.json', json_encode($contenu_produit));
 
-    echo '<p class="text-center w-100 bg-primary" id="reussite"> Ajout Réussi! </p>';
+    echo '<p class="text-center w-100" id="reussite"> Ajout Réussi! </p>';
 }
