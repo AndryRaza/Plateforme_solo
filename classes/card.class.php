@@ -73,6 +73,7 @@ class Card{
     public function getActive(){
         return $this->active;
     }
+
 }
 
 

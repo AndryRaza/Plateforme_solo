@@ -7,10 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
     $validExt = array('.jpg', '.jpeg', '.gif', '.png');
     $name_file = $_FILES['image_produit']['name']; //Nom de l'image
-    $fileExt = strtolower(substr(strrchr($name_file, '.'), 1));
+    $fileExt = strtolower(substr(strrchr($name_file, '.'), 1)); //On met en miniscule le nom de l'image
 
     if (in_array("." . $fileExt, $validExt)) {
-    $content_dir = "D:\Formation\Plateforme_solo\assets\\"; //Chemin du dossier pour enregistrer nos images
+    $content_dir = "assets/"; //Chemin du dossier pour enregistrer nos images
     $tmp_file = $_FILES['image_produit']['tmp_name']; //Fichier temporaire stocké sur l'ordi qui sera supprimé avec move
 
     move_uploaded_file($tmp_file, $content_dir . $name_file); //On place l'image dans le dossier
@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
     $tab_provi = array( //On stock notre nouveau produit dans la liste des produits déjà crées
         'nom' => $new_card->getName(), 'description' => $new_card->getDescription(), 'image' => $new_card->getImage(),
-        'price' => $new_card->getPrice(), 'timer' => $secondes = mktime(
-            date("H") + $new_card->getHour(),
+        'price' => $new_card->getPrice(), 'timer' => $secondes = mktime(    //timer contiendra l'heure de fin de notre enchère
+            date("H") + $new_card->getHour(), 
             date("i") + $new_card->getMinute(),
             date("s") + $new_card->getSeconde(),
             date("m"),

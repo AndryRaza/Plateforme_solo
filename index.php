@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['admin'])) {
-    $_SESSION['admin'] = false;
+if (!isset($_SESSION['admin'])) {   //$_SESSION['admin'] servira à savoir si l'on est connecté en tant qu'admin ou pas
+    $_SESSION['admin'] = false; //lors de l'arrivé sur la page, c'est normal qu'on ne soit pas connecté en tant qu'admin
 }
 
 
@@ -20,14 +20,15 @@ if (!isset($_SESSION['admin'])) {
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
     <title>Plateforme d'enchères</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <?php if (!($_SESSION['admin'])) { ?>
+        <?php if (!($_SESSION['admin'])) //On regarde si on est connecté en tant qu'admin ,si non on affiche les inputs de connexion
+        { ?>  
             <form class="co pt-3" action="scripts/connexion.php" method="POST">
                 <div class="form-group d-flex">
                     <input type="text" class="form-control mr-2" name="user" id="user" placeholder="Nom d'utilisateur" required pattern="[a-zA-Z]+">
@@ -35,7 +36,8 @@ if (!isset($_SESSION['admin'])) {
                     <input type="submit" class="btn h-50" name="connexion" id="connexion" value="Se connecter">
                 </div>
             </form>
-        <?php } else { ?>
+        <?php } else //si oui on peut afficher un bouton de déconnexion et le menu pour l'admin 
+        { ?>
             <form class="co" action="scripts/connexion.php" method="POST">
                 Mode ADMIN
                 <input type="submit" class="btn mr-2" name="deconnexion" id="deconnexion" value="Se deconnecter">
@@ -47,7 +49,7 @@ if (!isset($_SESSION['admin'])) {
         </button>
         <div class="collapse navbar-collapse mb-4 justify-content-end " id="navbarNav">
             <ul class="navbar-nav">
-                <?php if (($_SESSION['admin'])) { ?>
+                <?php if (($_SESSION['admin'])) { //On regarde si on est connecté en tant qu'admin, si oui on affiche son menu?>    
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
                     </li>
@@ -77,8 +79,8 @@ if (!isset($_SESSION['admin'])) {
 
     <?php
     //Cette partie sert à rafraichir les timers de chaque enchère
-    $list_produit = json_decode(file_get_contents('data/card.json'), true);
-    for ($x = 0; $x < count($list_produit); $x++) {
+    $list_produit = json_decode(file_get_contents('data/card.json'), true); 
+    for ($x = 0; $x < count($list_produit); $x++) {     //On récupère la longueur du tableau contenant des produits, on rafraichit le temps de chaque enchère
 
 
 

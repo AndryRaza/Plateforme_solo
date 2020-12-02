@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
         $name_file = $_FILES['image_produit']['name']; //Nom de l'image
         $fileExt = strtolower(substr(strrchr($name_file, '.'), 1)); //on met tout en miniscule
         if (in_array("." . $fileExt, $validExt)) {
-            $content_dir = "D:\Formation\Projet-perso-enchere\assets\\"; //Chemin pour placer l'image
+            $content_dir = "assets/"; //Chemin pour placer l'image
             $tmp_file = $_FILES['image_modifie']['tmp_name']; //On garde provisoirement l'image, quand on le déplacera il sera supprimé
             move_uploaded_file($tmp_file, $content_dir . $name_file); //On déplace l'image dans le dossier défini précédemment
         }
