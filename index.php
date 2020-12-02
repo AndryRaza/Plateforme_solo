@@ -79,7 +79,7 @@ if (!isset($_SESSION['card_cree'])) {
             <?php if (!$_SESSION['admin']) { ?>
                 <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
 
-                    <?php include 'scripts/create_card.php' ?>
+                    <?php include 'scripts/client.php' ?>
 
                 </div>
             <?php } else { ?>

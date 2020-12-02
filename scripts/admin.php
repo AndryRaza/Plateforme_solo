@@ -1,9 +1,12 @@
 <?php
+
+include 'create_card.php';
+
 $liste_produit = json_decode(file_get_contents('data/card.json'), true);
 
 
-foreach ($liste_produit as $id => $value) { ?>
-
+foreach ($liste_produit as $id => $value) {
+     if ($value['active']) { ?>
     <tr>
         <td class="text-center"><?= $value['nom'] ?></td>
         <td class="text-center"><img src="assets/<?= $value['image'] ?>" width=150px></td>
@@ -15,6 +18,6 @@ foreach ($liste_produit as $id => $value) { ?>
         </td>
     </tr>
 
-<?php }
+<?php } }
 
 ?>

@@ -45,9 +45,16 @@
 
     <section class="container-fluid" id="ecran_card">
         <div class="container mt-5 mb-5 ">
-            <div class="row row-cols-md-4 row-cols-2">
-                <?php include '../scripts/desactivate.php' ?>
-            </div>
+        <table class="table w-100">
+                    <thead>
+                        <tr>
+                            <th class="text-center" scope="col">Nom</th>
+                            <th class="text-center" scope="col">Image</th>
+                            <th class="text-center" scope="col"></th>
+                        </tr>
+                    </thead>
+                    <?php include '../scripts/desactivate.php' ?>
+                </table>
         </div>
     </section>
 </body>
