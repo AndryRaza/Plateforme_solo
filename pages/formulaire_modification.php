@@ -56,7 +56,7 @@
 
                     <div class="form-group row row-cols-md-2 row-cols-1">
                         <label class="col-md-3 " for="description_modifie">Description du produit :</label>
-                        <input type="text" class="form-control col-md-9" name="description_modifie" id="description_modifie" value="<?= $produit[$i]['description'] ?>" required pattern="[a-zA-Z é è à ^ ' ]+">
+                        <input type="text" class="form-control col-md-9" name="description_modifie" id="description_modifie" value="<?= $produit[$i]['description'] ?>" required pattern="[a-zA-Z0-9 é è à ^ ' ( ) ù % µ £ $ € , ; . : / \ ç & ²  ]+">
                     </div>
 
                     <div class="form-group row row-cols-md-2 row-cols-1">

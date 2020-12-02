@@ -18,13 +18,13 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light ">
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse mb-4 justify-content-end " id="navbarNav">
-            <ul class="navbar-nav">
-                <?php if (($_SESSION['admin'])) { ?>
+        <?php if (($_SESSION['admin'])) { ?>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mb-4 justify-content-end " id="navbarNav">
+                <ul class="navbar-nav">
+
                     <li class="nav-item active">
                         <a class="nav-link" href="../index.php">Accueil</a>
                     </li>
@@ -35,8 +35,8 @@
                         <a class="nav-link" href="page_desactivate.php">Activer un produit</a>
                     </li>
                 <?php } ?>
-            </ul>
-        </div>
+                </ul>
+            </div>
     </nav>
     <header class="container-fluid  text-white d-flex align-items-center justify-content-center">
         <h1>Formulaire d'ajout</h1>
@@ -52,7 +52,7 @@
 
                 <div class="form-group row row-cols-md-2 row-cols-1">
                     <label class="col-md-3 " for="description_produit">Description du produit :</label>
-                    <input type="text" class="form-control col-md-9" name="description_produit" id="description_produit" value="Ce produit est très bien" required pattern="[a-zA-Z é è à ^ ' ]+">
+                    <input type="text" class="form-control col-md-9" name="description_produit" id="description_produit" value="Ce produit est très bien" required pattern="[a-zA-Z0-9 é è à ^ ' ( ) ù % µ £ $ € , ; . : / \ ç & ²  ]+">
                 </div>
 
                 <div class="form-group row row-cols-md-2 row-cols-1">

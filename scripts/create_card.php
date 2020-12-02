@@ -61,7 +61,7 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide, on va afficher chacu
     $list_provi = array_reverse($liste_produit,true);
     foreach ($list_provi as $id => $value) {
         if ($value['active']) { ?>
-            <div class="card col mr-3 mb-2" style="width: 18rem;" id="card_<?= $id ?>">
+            <div class="card col mr-md-3 mb-2" style="width: 18rem;" id="card_<?= $id ?>">
                 <h2 class="card-title text-center" style="font-size:35px;"><?= $value['nom'] ?></h2>
                 <h5 class="card-title text-center" style="color:red; font-size:30px"><?= $value['price'] ?>€</h5>
                 <img height="300px" src="assets/<?= $value['image'] ?>" class="card-img-top mb-3" alt="...">

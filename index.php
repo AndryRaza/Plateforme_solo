@@ -47,12 +47,13 @@ if (!isset($_SESSION['card_cree'])){
             </form>
         <?php }
         ?>
+        <?php if (($_SESSION['admin'])) { //On regarde si on est connecté en tant qu'admin, si oui on affiche son menu?>  
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse mb-4 justify-content-end " id="navbarNav">
             <ul class="navbar-nav">
-                <?php if (($_SESSION['admin'])) { //On regarde si on est connecté en tant qu'admin, si oui on affiche son menu?>    
+                
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
                     </li>
