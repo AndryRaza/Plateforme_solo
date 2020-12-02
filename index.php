@@ -5,6 +5,9 @@ if (!isset($_SESSION['admin'])) {   //$_SESSION['admin'] servira à savoir si l'
     $_SESSION['admin'] = false; //lors de l'arrivé sur la page, c'est normal qu'on ne soit pas connecté en tant qu'admin
 }
 
+if (!isset($_SESSION['card_cree'])){
+    $_SESSION['card_cree'] = false;
+}
 
 ?>
 
@@ -72,7 +75,9 @@ if (!isset($_SESSION['admin'])) {   //$_SESSION['admin'] servira à savoir si l'
     <section class="container-fluid" id="ecran_card">
         <div class="container mt-5 mb-5 ">
             <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
+               
                 <?php include 'scripts/create_card.php' ?>
+               
             </div>
         </div>
     </section>

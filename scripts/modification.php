@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
     $produit[$j]['time_up'] = $_POST['aug_duree_modifie']; //On modifie de combien le temps de l'enchère sera augmenté
 
     file_put_contents('../data/card.json', json_encode($produit)); //On "traduit" la nouvelle liste en json puis on l'enregistre dans le fichier json
-    header('Location: ../index.php');
+    header('Location: ../index.php#card_'.$j); //On redirige l'utilisateur sur l'enchère modifiée
 }
 
 /***************************Partie pour désactiver une carte ***************************/

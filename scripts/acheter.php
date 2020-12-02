@@ -11,8 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['acheter']))
    $produit[$j]['timer'] += $produit[$j]['time_up']*60; //On augmente les minutes, *60 car le timer est en secondes 
 
     file_put_contents('../data/card.json', json_encode($produit)); //On enregistre les modifications 
+
+    header('Location: ../index.php#card_'.$j); //On redirige l'utilisateur sur l'enchère
 }
 
 
-header('Location: ../index.php') //On redirige l'utilisateur sur la page d'accueil
+
 ?>

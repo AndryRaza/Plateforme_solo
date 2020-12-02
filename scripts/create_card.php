@@ -1,5 +1,7 @@
 <?php
 
+
+
 /************ Permet l'affichage des cartes fraichement ajouté ******************/
 
 require 'classes/card.class.php';
@@ -44,8 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
     );
 
     array_push($contenu_produit, $tab_provi);
+   
     //Et pour finir, on enregistre le tout
     file_put_contents('data/card.json', json_encode($contenu_produit));
+    $_SESSION['card_cree'] = true; //Variable pour savoir si l'ajout a bien été faite, là l'ajout est réussi
 }
 
 //On ouvre notre fichier contenant les produits pour pouvoir la parcourir et afficher chacune des cartes
@@ -57,7 +61,7 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide, on va afficher chacu
     $list_provi = array_reverse($liste_produit,true);
     foreach ($list_provi as $id => $value) {
         if ($value['active']) { ?>
-            <div class="card col mr-3 mb-2" style="width: 18rem;">
+            <div class="card col mr-3 mb-2" style="width: 18rem;" id="card_<?= $id ?>">
                 <h2 class="card-title text-center" style="font-size:35px;"><?= $value['nom'] ?></h2>
                 <h5 class="card-title text-center" style="color:red; font-size:30px"><?= $value['price'] ?>€</h5>
                 <img height="300px" src="assets/<?= $value['image'] ?>" class="card-img-top mb-3" alt="...">
