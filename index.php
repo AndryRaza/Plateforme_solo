@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin'])) {   //$_SESSION['admin'] servira à savoir si l'
     $_SESSION['admin'] = false; //lors de l'arrivé sur la page, c'est normal qu'on ne soit pas connecté en tant qu'admin
 }
 
-if (!isset($_SESSION['card_cree'])){
+if (!isset($_SESSION['card_cree'])) {
     $_SESSION['card_cree'] = false;
 }
 
@@ -31,7 +31,7 @@ if (!isset($_SESSION['card_cree'])){
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <?php if (!($_SESSION['admin'])) //On regarde si on est connecté en tant qu'admin ,si non on affiche les inputs de connexion
-        { ?>  
+        { ?>
             <form class="co pt-3" action="scripts/connexion.php" method="POST">
                 <div class="form-group d-flex">
                     <input type="text" class="form-control mr-2" name="user" id="user" placeholder="Nom d'utilisateur" required pattern="[a-zA-Z]+">
@@ -47,13 +47,14 @@ if (!isset($_SESSION['card_cree'])){
             </form>
         <?php }
         ?>
-        <?php if (($_SESSION['admin'])) { //On regarde si on est connecté en tant qu'admin, si oui on affiche son menu?>  
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse mb-4 justify-content-end " id="navbarNav">
-            <ul class="navbar-nav">
-                
+        <?php if (($_SESSION['admin'])) { //On regarde si on est connecté en tant qu'admin, si oui on affiche son menu
+        ?>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mb-4 justify-content-end " id="navbarNav">
+                <ul class="navbar-nav">
+
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
                     </li>
@@ -64,8 +65,8 @@ if (!isset($_SESSION['card_cree'])){
                         <a class="nav-link" href="pages/page_desactivate.php">Activer un produit</a>
                     </li>
                 <?php } ?>
-            </ul>
-        </div>
+                </ul>
+            </div>
     </nav>
 
     <header class="container-fluid  text-white d-flex">
@@ -75,17 +76,31 @@ if (!isset($_SESSION['card_cree'])){
 
     <section class="container-fluid" id="ecran_card">
         <div class="container mt-5 mb-5 ">
-            <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
-               
-                <?php include 'scripts/create_card.php' ?>
-               
-            </div>
+            <?php if (!$_SESSION['admin']) { ?>
+                <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
+
+                    <?php include 'scripts/create_card.php' ?>
+
+                </div>
+            <?php } else { ?>
+                <table class="table w-100">
+                    <thead>
+                        <tr>
+                            <th class="text-center" scope="col">Nom</th>
+                            <th class="text-center" scope="col">Image</th>
+                            <th class="text-center" scope="col"></th>
+                        </tr>
+                    </thead>
+                    <?php include 'scripts/admin.php' ?>
+                </table>
+                
+            <?php } ?>
         </div>
     </section>
 
     <?php
     //Cette partie sert à rafraichir les timers de chaque enchère
-    $list_produit = json_decode(file_get_contents('data/card.json'), true); 
+    $list_produit = json_decode(file_get_contents('data/card.json'), true);
     for ($x = 0; $x < count($list_produit); $x++) {     //On récupère la longueur du tableau contenant des produits, on rafraichit le temps de chaque enchère
 
 
@@ -98,7 +113,7 @@ if (!isset($_SESSION['card_cree'])){
 
                 function myFunction() {
                     var myVar = setInterval(function() {
-                            $('<?php echo '#duree_' . $x ?>').load('index.php <?php echo '#duree_' . $x ?>');
+                        $('<?php echo '#duree_' . $x ?>').load('index.php <?php echo '#duree_' . $x ?>');
                     }, 1000);
                 };
 
