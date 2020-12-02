@@ -6,13 +6,20 @@
 
 require 'classes/card.class.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
-    if ($_FILES['image_produit']['name'] != '' and $_FILES['image_produit']['size'] < 100000000000000000) {
+
+    
+    if ($_FILES['image_produit']['name'] != '') {
         
         $name_file = $_FILES['image_produit']['name']; //Nom de l'image
-        $content_dir = "assets/"; //Chemin du dossier pour enregistrer nos images
-        $tmp_file = $_FILES['image_produit']['tmp_name']; //Fichier temporaire stocké sur l'ordi qui sera supprimé avec move
-
-        move_uploaded_file($tmp_file, $content_dir . $name_file); //On place l'image dans le dossier
+        $extensions = array('jpg','gif','png','jpeg');
+        $fileExt = strtolower(substr(strrchr($name_file, '.'), 1));
+        if(in_array("." . $fileExt, $extensions))//On recherche dans le tableau des extensions valides si l'extension du fichier ajouté correspond
+        { 
+            $content_dir = "D:\Formation\Plateforme_solo\\"; //Chemin du dossier pour enregistrer nos images
+            $tmp_file = $_FILES['image_produit']['tmp_name']; //Fichier temporaire stocké sur l'ordi qui sera supprimé avec move
+    
+            move_uploaded_file($tmp_file, $content_dir . $name_file); //On place l'image dans le dossier
+        }
 
     } else {
         $name_file = 'no-image.png';
