@@ -7,14 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
 
 
     $produit = json_decode(file_get_contents('../data/card.json'), true); //On ouvre le fichier json et on stock le tableau qu'il renvoie 
-
-
-    //Il manque la sécurité 
-
+    $name_file = $_FILES['image_produit']['name']; //Nom de l'image
+   
     //Si l'utilisateur souhaite modifier l'image de son enchère, sinon on garde la même image qu'à l'ajout
     if (isset($_FILES['image_modifie']['name'])) {
         $validExt = array('.jpg', '.jpeg', '.gif', '.png');
-        $name_file = $_FILES['image_produit']['name']; //Nom de l'image
         $fileExt = strtolower(substr(strrchr($name_file, '.'), 1)); //on met tout en miniscule
         if (in_array("." . $fileExt, $validExt)) {
             $content_dir = "assets/"; //Chemin pour placer l'image
@@ -23,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
         }
         $produit[$j]['image'] = $name_file; //On modifie le nom de l'image du produit dans notre fichier json
 
+    } else {
+        $name_file = 'no-image.png';
     }
 
 

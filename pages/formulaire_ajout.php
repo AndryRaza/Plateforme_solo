@@ -57,7 +57,7 @@
 
                 <div class="form-group row row-cols-md-2 row-cols-1">
                     <label class="col-md-3" for="image_produit">Image du produit :</label>
-                    <input type="file" class="form-control col-md-9" name="image_produit" id="image_produit" required>
+                    <input type="file" class="form-control col-md-9" name="image_produit" id="image_produit">
                 </div>
 
                 <div class="form-group row row-cols-md-2 row-cols-1">
