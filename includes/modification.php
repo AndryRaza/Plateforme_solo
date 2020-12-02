@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
 /***************************Partie pour désactiver une carte ***************************/
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['desactivate'])) {
 
-    $j = $_POST['id_produit_modif']; //On récupère l'index du produit cliqué
+    $j = $_POST['id_produit']; //On récupère l'index du produit cliqué
     $produit = json_decode(file_get_contents('../data/card.json'), true);
     $produit[$j]['active'] = false;
 

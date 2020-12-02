@@ -43,3 +43,7 @@ background-color: #ECF0F1;
 body{
     font-family: 'Roboto', sans-serif;
 }
+
+td{
+    font-size:20px;
+}

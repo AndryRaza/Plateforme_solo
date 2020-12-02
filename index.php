@@ -29,7 +29,7 @@ if (!isset($_SESSION['card_cree'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-md navbar-light">
         <?php if (!($_SESSION['admin'])) //On regarde si on est connecté en tant qu'admin ,si non on affiche les inputs de connexion
         { ?>
             <form class="co pt-3" action="includes/connexion.php" method="POST">
@@ -83,7 +83,7 @@ if (!isset($_SESSION['card_cree'])) {
 
                 </div>
             <?php } else { ?>
-                <table class="table w-100">
+                <table class="table table-responsive-md">
                     <thead>
                         <tr>
                             <th class="text-center" scope="col">Nom</th>

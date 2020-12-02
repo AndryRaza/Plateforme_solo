@@ -81,7 +81,6 @@
 
                     <div class="form-group d-flex justify-content-end">
                         <input type="hidden" name="id_produit_modif" id="id_produit_modif" value="<?= $i ?>">
-                        <input type="submit" class="btn  mr-3" name="desactivate" id="desactivate" value="Désactiver le produit">
                         <input type="submit" class="btn " name="maj" id="maj" value="Modifier le produit">
                     </div>
                 </form>

@@ -15,7 +15,7 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide, on va afficher chacu
             <div class="card col mr-md-3 mb-2" style="width: 18rem;" id="card_<?= $id ?>">
                 <h2 class="card-title text-center" style="font-size:35px;"><?= $value['nom'] ?></h2>
                 <h5 class="card-title text-center" style="color:red; font-size:30px"><?= $value['price'] ?>€</h5>
-                <img height="300px" src="assets/<?= $value['image'] ?>" class="card-img-top mb-3" alt="...">
+                <img height="200px" src="assets/<?= $value['image'] ?>" class="card-img-top mb-3" alt="...">
                 <div class="barre"></div>
                 <div class="card-body">
                     <h5 class="card-title text-center" id="duree_<?= $id ?>"> <?php include 'timer.php'; ?> </h5>
