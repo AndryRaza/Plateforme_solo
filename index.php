@@ -79,7 +79,7 @@ if (!isset($_SESSION['card_cree'])) {
             <?php if (!$_SESSION['admin']) { ?>
                 <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
 
-                    <?php include 'includes/client.php' ?>
+                    <?php include 'includes/client.php' ; ?>
 
                 </div>
             <?php } else { ?>
@@ -91,7 +91,7 @@ if (!isset($_SESSION['card_cree'])) {
                             <th class="text-center" scope="col"></th>
                         </tr>
                     </thead>
-                    <?php include 'includes/admin.php' ?>
+                    <?php include 'includes/admin.php';  ?>
                 </table>
                 
             <?php } ?>

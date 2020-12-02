@@ -52,4 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
     //Et pour finir, on enregistre le tout
     file_put_contents('data/card.json', json_encode($contenu_produit));
+
+    echo '<p class="text-center w-100 bg-primary" id="reussite"> Ajout Réussi! </p>';
 }

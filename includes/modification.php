@@ -60,4 +60,3 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['activate'])) {
     header('Location: ../pages/page_desactivate.php');
 }
 
-//Les modifications faites, on redirige l'utilisateur sur la page d'accueil
