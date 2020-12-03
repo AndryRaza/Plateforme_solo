@@ -21,7 +21,7 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide, on va afficher chacu
                     <h5 class="card-title text-center" id="duree_<?= $id ?>"> <?php include 'timer.php'; ?> </h5>
 
 
-                    <p class="card-text text-center"><?= $value['description'] ?></p>
+                    <p class="card-text text-center"style="height:80px;overflow:hidden;"><?= $value['description'] ?></p>
 
                     <form action="includes/acheter.php" method="POST">
                         <input type="hidden" name="id_produit" id="id_produit" value="<?= $id ?>">

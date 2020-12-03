@@ -7,9 +7,9 @@
 require 'classes/card.class.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
-    $dossier = 'D:\Formation\Plateforme_solo\assets\\';
+    $dossier = 'assets/';
     $fichier = basename($_FILES['image_produit']['name']);
-    $taille_maxi = 100000;
+    $taille_maxi = 1000000;
     $taille = filesize($_FILES['image_produit']['tmp_name']);
     $extensions = array('.png', '.gif', '.jpg', '.jpeg');
     $extension = strrchr($_FILES['image_produit']['name'], '.');
@@ -36,6 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
         {
             $fichier = 'no-image.png';
         }
+    }
+    else {
+        echo $erreur ;
+        $fichier = 'no-image.png';
     }
 
     $new_card = new Card(   //On crée un nouvel instance Card

@@ -79,7 +79,7 @@ if (!isset($_SESSION['card_cree'])) {
             <?php if (!$_SESSION['admin']) { ?>
                 <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
 
-                    <?php include 'includes/client.php' ; ?>
+                    <?php include 'includes/client.php'; ?>
 
                 </div>
             <?php } else { ?>
@@ -93,26 +93,17 @@ if (!isset($_SESSION['card_cree'])) {
                     </thead>
                     <?php include 'includes/admin.php';  ?>
                 </table>
-                
+
             <?php } ?>
         </div>
     </section>
-    
-    <footer class="container-fluid">
-    
-    <p class="text-center container">Tous droits réservés. ToToCorp 2020-2020</p>
-    </footer>
+
 
     <?php
     //Cette partie sert à rafraichir les timers de chaque enchère
     $list_produit = json_decode(file_get_contents('data/card.json'), true);
     for ($x = 0; $x < count($list_produit); $x++) {     //On récupère la longueur du tableau contenant des produits, on rafraichit le temps de chaque enchère
-
-
-
     ?>
-
-
         <script>
             $(document).ready(function() {
 
@@ -125,7 +116,6 @@ if (!isset($_SESSION['card_cree'])) {
                 myFunction();
             })
         </script>
-
     <?php } ?>
 
 </body>

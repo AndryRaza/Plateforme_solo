@@ -42,8 +42,10 @@ background-color: #ECF0F1;
 
 body{
     font-family: 'Roboto', sans-serif;
-    position: relative;
+    margin:0;
+    padding:0;
 }
+
 
 td{
     font-size:20px;
@@ -54,10 +56,3 @@ td{
     color:white;
 }
 
-footer{
-    background-color:#81C784;
-    font-size:20px;
-    position: absolute;
-    bottom: 0;
-    height:100px;
-}
