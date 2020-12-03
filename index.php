@@ -100,7 +100,7 @@ if (!isset($_SESSION['enchere_impossible'])) {
         <?php if (!($_SESSION['admin']) and $_SESSION['user'] != '') {
         ?>
 
-            <p class="ml-auto">Votre solde est de : <?= $_SESSION['money']; ?>€</p>
+            <p class="ml-md-auto">Votre solde est de : <?= $_SESSION['money']; ?>€</p>
         <?php } ?>
 
 
