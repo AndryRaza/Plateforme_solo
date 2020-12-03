@@ -9,9 +9,10 @@ class Card{
     protected $card_time;
     protected $price_up;
     protected $time_up;
+    protected $price_clic;
     protected $active;
 
-    public function __construct($n,$d,$i,$p,$th,$tm,$ts,$pu,$tu,$a)
+    public function __construct($n,$d,$i,$p,$th,$tm,$ts,$pu,$tu,$pc,$a)
     {
         $this->card_name = $n;
         $this->card_description = $d;
@@ -22,6 +23,7 @@ class Card{
         $this->card_time_seconde=$ts;
         $this->price_up=$pu;
         $this->time_up=$tu;
+        $this->price_clic=$pc;
         $this->active=$a;
     }
 
@@ -68,6 +70,11 @@ class Card{
     public function getTimeUp()
     {
         return $this->time_up;
+    }
+
+    public function getPriceClic()
+    {
+        return $this->price_clic;
     }
 
     public function getActive(){

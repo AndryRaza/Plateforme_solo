@@ -7,7 +7,7 @@
 require 'classes/card.class.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
-    $dossier = 'assets/';
+    $dossier = 'D:\Formation\Plateforme_solo\assets\\';
     $fichier = basename($_FILES['image_produit']['name']);
     $taille_maxi = 1000000;
     $taille = filesize($_FILES['image_produit']['tmp_name']);
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
     $extension = strrchr($_FILES['image_produit']['name'], '.');
 
     if (!in_array($extension, $extensions)) {
-        $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+        $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg';
     }
 
     if ($taille > $taille_maxi) {
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
     }
 
     $new_card = new Card(   //On crée un nouvel instance Card
-        $_POST['nom_produit'],
-        $_POST['description_produit'],
+        htmlspecialchars($_POST['nom_produit']),
+        htmlspecialchars($_POST['description_produit']),
         $fichier,
         $_POST['prix_produit'],
         $_POST['heure_produit'],
@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
         $_POST['seconde_produit'],
         $_POST['aug_prix'],
         $_POST['aug_duree'],
+        $_POST['prix_clic'],
         true
     );
 
@@ -68,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
             date("d"),
             date("Y")
         ),
-        'price_up' => $new_card->getPriceUp(), 'time_up' => $new_card->getTimeUp(), 'active' => $new_card->getActive()
+        'price_up' => $new_card->getPriceUp(), 'time_up' => $new_card->getTimeUp(), 'prix_clic'=>$new_card->getPriceClic(),'active' => $new_card->getActive()
     );
 
     array_push($contenu_produit, $tab_provi);

@@ -5,8 +5,24 @@ if (!isset($_SESSION['admin'])) {   //$_SESSION['admin'] servira à savoir si l'
     $_SESSION['admin'] = false; //lors de l'arrivé sur la page, c'est normal qu'on ne soit pas connecté en tant qu'admin
 }
 
-if (!isset($_SESSION['card_cree'])) {
-    $_SESSION['card_cree'] = false;
+if (!isset($_SESSION['user'])) {
+    $_SESSION['user'] = '';
+}
+
+if (!isset($_SESSION['money'])) {
+    $_SESSION['money'] = 0;
+}
+
+if (!isset($_SESSION['debite'])) {
+    $_SESSION['debite'] = false;
+}
+
+if (!isset($_SESSION['debite_prix'])) {
+    $_SESSION['debite_prix'] = 0;
+}
+
+if (!isset($_SESSION['enchere_impossible'])) {
+    $_SESSION['enchere_impossible'] = false;
 }
 
 ?>
@@ -30,7 +46,7 @@ if (!isset($_SESSION['card_cree'])) {
 
 <body>
     <nav class="navbar navbar-expand-md navbar-light">
-        <?php if (!($_SESSION['admin'])) //On regarde si on est connecté en tant qu'admin ,si non on affiche les inputs de connexion
+        <?php if (!($_SESSION['admin']) and $_SESSION['user'] === '') //On regarde si on est connecté en tant qu'admin ,si non on affiche les inputs de connexion
         { ?>
             <form class="co pt-3" action="includes/connexion.php" method="POST">
                 <div class="form-group d-flex">
@@ -39,7 +55,9 @@ if (!isset($_SESSION['card_cree'])) {
                     <input type="submit" class="btn h-50" name="connexion" id="connexion" value="Se connecter">
                 </div>
             </form>
-        <?php } else //si oui on peut afficher un bouton de déconnexion et le menu pour l'admin 
+        <?php }
+
+        if ($_SESSION['admin'] and $_SESSION['user'] === '') //si oui on peut afficher un bouton de déconnexion et le menu pour l'admin 
         { ?>
             <form class="co" action="includes/connexion.php" method="POST">
                 Mode ADMIN
@@ -47,7 +65,17 @@ if (!isset($_SESSION['card_cree'])) {
             </form>
         <?php }
         ?>
-        <?php if (($_SESSION['admin'])) { //On regarde si on est connecté en tant qu'admin, si oui on affiche son menu
+
+        <?php if (($_SESSION['user']) != '' and !($_SESSION['admin'])) { //On regarde si on est connecté en tant qu'admin, si oui on affiche son menu
+        ?>
+            <form class="co mt-2" action="includes/connexion.php" method="POST">
+                Bienvenue <?= $_SESSION['user']; ?>
+                <input type="submit" class="btn mr-2 ml-3" name="deconnexion" id="deconnexion" value="Se deconnecter">
+            </form>
+        <?php } ?>
+
+
+        <?php if (($_SESSION['admin']) and $_SESSION['user'] === '') { //On regarde si on est connecté en tant qu'admin, si oui on affiche son menu
         ?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -64,9 +92,20 @@ if (!isset($_SESSION['card_cree'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="pages/page_desactivate.php">Activer un produit</a>
                     </li>
-                <?php } ?>
+
                 </ul>
             </div>
+        <?php } ?>
+
+        <?php if (!($_SESSION['admin']) and $_SESSION['user'] != '') {
+        ?>
+
+            <p class="ml-auto">Votre solde est de : <?= $_SESSION['money']; ?>€</p>
+        <?php } ?>
+
+
+
+
     </nav>
 
     <header class="container-fluid  text-white d-flex">
@@ -77,8 +116,15 @@ if (!isset($_SESSION['card_cree'])) {
     <section class="container-fluid" id="ecran_card">
         <div class="container mt-5 mb-5 ">
             <?php if (!$_SESSION['admin']) { ?>
+                <?php if ($_SESSION['debite']) {
+                        echo '<p class="text-center">Vous avez été débité de ' . $_SESSION['debite_prix'] . '€ </p>';
+                        $_SESSION['debite'] = false;
+                    } ?>
+                 <?php if ($_SESSION['enchere_impossible']) {
+                        echo '<p class="text-center">Vous n\'avez pu de sous. </p>';
+                        $_SESSION['enchere_impossible'] = false;
+                    } ?>
                 <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
-
                     <?php include 'includes/client.php'; ?>
 
                 </div>

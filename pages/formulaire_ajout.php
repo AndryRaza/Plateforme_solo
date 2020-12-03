@@ -83,6 +83,11 @@
                     <input type="number" class="form-control col-md-9" name="aug_duree" id="aug_duree" placeholder="Ex: 1mn" required min=1 step="0.01">
                 </div>
 
+                <div class="form-group row row-cols-md-2 row-cols-1">
+                    <label class="col-md-3" for="prix_clic">Définir le prix du clic (50cts):</label>
+                    <input type="number" class="form-control col-md-9" name="prix_clic" id="prix_clic" placeholder="Ex: 50cts" required min=1 step="0.01">
+                </div>
+
                 <div class="form-group d-flex justify-content-end">
                     <input type="submit" class="btn  " name="add" id="add" value="Valider">
                 </div>
