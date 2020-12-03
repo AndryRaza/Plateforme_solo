@@ -42,6 +42,7 @@ background-color: #ECF0F1;
 
 body{
     font-family: 'Roboto', sans-serif;
+    position: relative;
 }
 
 td{
@@ -51,4 +52,12 @@ td{
 #reussite{
     background-color:#81C784;
     color:white;
+}
+
+footer{
+    background-color:#81C784;
+    font-size:20px;
+    position: absolute;
+    bottom: 0;
+    height:100px;
 }

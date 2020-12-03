@@ -97,6 +97,11 @@ if (!isset($_SESSION['card_cree'])) {
             <?php } ?>
         </div>
     </section>
+    
+    <footer class="container-fluid">
+    
+    <p class="text-center container">Tous droits réservés. ToToCorp 2020-2020</p>
+    </footer>
 
     <?php
     //Cette partie sert à rafraichir les timers de chaque enchère

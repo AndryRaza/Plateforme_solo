@@ -69,7 +69,7 @@
                     <label class="col" for="duree_produit">Durée de l'enchère :</label>
                     <input type="number" class="form-control col" name="heure_produit" id="heure_produit" placeholder="Ex: 1h" required min=0>
                     <input type="number" class="form-control col" name="minute_produit" id="minute_produit" placeholder="Ex: 1mn" required min=0>
-                    <input type="number" class="form-control col" name="seconde_produit" id="seconde_produit" placeholder="Ex: 1sec" required min=1>
+                    <input type="number" class="form-control col" name="seconde_produit" id="seconde_produit" placeholder="Ex: 1sec" required min=0>
 
                 </div>
 

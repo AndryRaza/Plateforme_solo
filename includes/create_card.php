@@ -7,29 +7,41 @@
 require 'classes/card.class.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
-    
-    if ($_FILES['image_produit']['name'] != '') {
-        
-        $name_file = $_FILES['image_produit']['name']; //Nom de l'image
-        $extensions = array('jpg','gif','png','jpeg');
-        $fileExt = strtolower(substr(strrchr($name_file, '.'), 1));
-        if(in_array("." . $fileExt, $extensions))//On recherche dans le tableau des extensions valides si l'extension du fichier ajouté correspond
-        { 
-            $content_dir = "D:\Formation\Plateforme_solo\\"; //Chemin du dossier pour enregistrer nos images
-            $tmp_file = $_FILES['image_produit']['tmp_name']; //Fichier temporaire stocké sur l'ordi qui sera supprimé avec move
-    
-            move_uploaded_file($tmp_file, $content_dir . $name_file); //On place l'image dans le dossier
-        }
+    $dossier = 'D:\Formation\Plateforme_solo\assets\\';
+    $fichier = basename($_FILES['image_produit']['name']);
+    $taille_maxi = 100000;
+    $taille = filesize($_FILES['image_produit']['tmp_name']);
+    $extensions = array('.png', '.gif', '.jpg', '.jpeg');
+    $extension = strrchr($_FILES['image_produit']['name'], '.');
 
-    } else {
-        $name_file = 'no-image.png';
+    if (!in_array($extension, $extensions)) {
+        $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
     }
 
-    
+    if ($taille > $taille_maxi) {
+        $erreur = 'Le fichier est trop gros...';
+    }
+
+    if (!isset($erreur)) {
+        $fichier = strtr(
+            $fichier,
+            'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+            'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'
+        );
+        $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+        if (move_uploaded_file($_FILES['image_produit']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+        {
+            echo '';
+        } else //Sinon (la fonction renvoie FALSE).
+        {
+            $fichier = 'no-image.png';
+        }
+    }
+
     $new_card = new Card(   //On crée un nouvel instance Card
         $_POST['nom_produit'],
         $_POST['description_produit'],
-        $name_file,
+        $fichier,
         $_POST['prix_produit'],
         $_POST['heure_produit'],
         $_POST['minute_produit'],
