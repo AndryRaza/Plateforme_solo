@@ -1,1 +1,24 @@
-[{"nom":"Iphone X ","description":"Ce produit est tr\u00e8s bien","image":"5145.jpg","price":50.08,"timer":1607164671,"price_up":"2","time_up":"30","prix_clic":"20","active":true}]
+[
+    {
+        "nom": "Iphone X ",
+        "description": "Ce produit est tr\u00e8s bien",
+        "image": "5145.jpg",
+        "price": 50.08,
+        "timer": 1607164671,
+        "price_up": "2",
+        "time_up": "30",
+        "prix_clic": "20",
+        "active": true
+    },
+    {
+        "nom": "Iphone 5",
+        "description": "Ce produit est tr\u00e8s bien",
+        "image": "iphone.png",
+        "price": "50",
+        "timer": 1607164938,
+        "price_up": "3",
+        "time_up": "10",
+        "prix_clic": "30",
+        "active": true
+    }
+]

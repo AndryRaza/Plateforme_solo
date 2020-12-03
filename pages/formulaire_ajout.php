@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="form-group row row-cols-md-2 row-cols-1">
-                    <label class="col-md-3" for="prix_clic">Définir le prix du clic (50cts):</label>
+                    <label class="col-md-3" for="prix_clic">Définir le prix du clic (en cts):</label>
                     <input type="number" class="form-control col-md-9" name="prix_clic" id="prix_clic" placeholder="Ex: 50cts" required min=1 step="0.01">
                 </div>
 
