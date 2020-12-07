@@ -141,7 +141,6 @@ if (!isset($_SESSION['inscription'])) {
                 ?>
                 <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
                     <?php include 'includes/client.php'; ?>
-
                 </div>
             <?php } else { ?>
                 <table class="table table-responsive-md">

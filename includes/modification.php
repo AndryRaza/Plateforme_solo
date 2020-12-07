@@ -48,39 +48,59 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
         $fichier = 'no-image.png';
     }
 
- 
+    if (
+        stripos(htmlspecialchars($_POST['nom_produit']), '<') === false
+        and stripos(htmlspecialchars($_POST['description_produit']), '<') === false
+        and isset($_POST['nom_produit'])
+        and isset($_POST['description_produit'])
+        and isset($_POST['prix_produit'])
+        and isset($_POST['heure_produit'])
+        and isset($_POST['minute_produit'])
+        and isset($_POST['seconde_produit'])
+        and isset($_POST['aug_prix'])
+        and isset($_POST['aug_duree'])
+        and isset($_POST['prix_clic'])
+        and ($_POST['prix_produit'] > 0)
+        and ($_POST['heure_produit'] > 0)
+        and ($_POST['minute_produit'] >= 0)
+        and ($_POST['seconde_produit'] >= 0)
+        and ($_POST['aug_prix'] > 0)
+        and ($_POST['aug_duree'] > 0)
+        and ($_POST['prix_clic'] > 0)
+    ) {
 
-    $j =  $_POST['id_produit_modif']; //On récupère la place du produit dans notre fichier json pour pouvoir ensuite modifier ses caractéristiques
+        $j =  $_POST['id_produit_modif']; //On récupère la place du produit dans notre fichier json pour pouvoir ensuite modifier ses caractéristiques
 
-    $produit[$j]['nom'] = htmlspecialchars($_POST['nom_modifie']); //On modifie le nom
-    $produit[$j]['description'] = htmlspecialchars($_POST['description_modifie']); //On modifie la description
-    $produit[$j]['image'] = $fichier; //On modifie le nom de l'image du produit dans notre fichier json
-    $produit[$j]['price'] = $_POST['prix_modifie']; //On modifie son prix s'il le souhaite
-    $produit[$j]['price_up'] = $_POST['aug_prix_modifie']; //On modifie de combien le prix de l'enchère sera augmenté
-    $produit[$j]['time_up'] = $_POST['aug_duree_modifie']; //On modifie de combien le temps de l'enchère sera augmenté
-    $produit[$j]['prix_clic'] = $_POST['prix_clic_modifie']; //On modifie le prix du clic
-    file_put_contents('../data/card.json', json_encode($produit)); //On "traduit" la nouvelle liste en json puis on l'enregistre dans le fichier json
-    header('Location: ../index.php#card_' . $j); //On redirige l'utilisateur sur l'enchère modifiée
-}
+        $produit[$j]['nom'] = htmlspecialchars($_POST['nom_modifie']); //On modifie le nom
+        $produit[$j]['description'] = htmlspecialchars($_POST['description_modifie']); //On modifie la description
+        $produit[$j]['image'] = $fichier; //On modifie le nom de l'image du produit dans notre fichier json
+        $produit[$j]['price'] = $_POST['prix_modifie']; //On modifie son prix s'il le souhaite
+        $produit[$j]['price_up'] = $_POST['aug_prix_modifie']; //On modifie de combien le prix de l'enchère sera augmenté
+        $produit[$j]['time_up'] = $_POST['aug_duree_modifie']; //On modifie de combien le temps de l'enchère sera augmenté
+        $produit[$j]['prix_clic'] = $_POST['prix_clic_modifie']; //On modifie le prix du clic
+        file_put_contents('../data/card.json', json_encode($produit)); //On "traduit" la nouvelle liste en json puis on l'enregistre dans le fichier json
+        header('Location: ../index.php#card_' . $j); //On redirige l'utilisateur sur l'enchère modifiée
+    }
 
-/***************************Partie pour désactiver une carte ***************************/
-if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['desactivate'])) {
+    /***************************Partie pour désactiver une carte ***************************/
+    if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['desactivate'])) {
 
-    $j = $_POST['id_produit']; //On récupère l'index du produit cliqué
-    $produit = json_decode(file_get_contents('../data/card.json'), true);
-    $produit[$j]['active'] = false;
+        $j = $_POST['id_produit']; //On récupère l'index du produit cliqué
+        $produit = json_decode(file_get_contents('../data/card.json'), true);
+        $produit[$j]['active'] = false;
 
-    file_put_contents('../data/card.json', json_encode($produit));
-    header('Location: ../index.php');
-}
+        file_put_contents('../data/card.json', json_encode($produit));
+        header('Location: ../index.php');
+    }
 
-/***************************Partie pour activer une carte ***************************/
-if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['activate'])) {
+    /***************************Partie pour activer une carte ***************************/
+    if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['activate'])) {
 
-    $j = $_POST['id_desac']; //On récupère l'index du produit cliqué
-    $produit = json_decode(file_get_contents('../data/card.json'), true);
-    $produit[$j]['active'] = true;
+        $j = $_POST['id_desac']; //On récupère l'index du produit cliqué
+        $produit = json_decode(file_get_contents('../data/card.json'), true);
+        $produit[$j]['active'] = true;
 
-    file_put_contents('../data/card.json', json_encode($produit));
-    header('Location: ../pages/page_desactivate.php');
+        file_put_contents('../data/card.json', json_encode($produit));
+        header('Location: ../pages/page_desactivate.php');
+    }
 }

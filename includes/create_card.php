@@ -49,7 +49,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
         $fichier = 'no-image.png';
     }
 
-    if (stripos(htmlspecialchars($_POST['nom_produit']), '<') === false and stripos(htmlspecialchars($_POST['description_produit']), '<') === false) {
+    if (stripos(htmlspecialchars($_POST['nom_produit']), '<') === false 
+    and stripos(htmlspecialchars($_POST['description_produit']), '<') === false 
+    and isset($_POST['nom_produit']) 
+    and isset($_POST['description_produit']) 
+    and isset($_POST['prix_produit']) 
+    and isset($_POST['heure_produit']) 
+    and isset($_POST['minute_produit']) 
+    and isset($_POST['seconde_produit']) 
+    and isset($_POST['aug_prix']) 
+    and isset($_POST['aug_duree']) 
+    and isset($_POST['prix_clic'])
+    and ($_POST['prix_produit'] > 0)
+    and ($_POST['heure_produit'] > 0)  
+    and ($_POST['minute_produit'] >= 0)  
+    and ($_POST['seconde_produit'] >= 0)  
+    and ($_POST['aug_prix'] > 0)  
+    and ($_POST['aug_duree'] > 0)  
+    and ($_POST['prix_clic'] > 0)    
+    ) {
         $new_card = new Card(   //On crée un nouvel instance Card
             htmlspecialchars($_POST['nom_produit']),
             htmlspecialchars($_POST['description_produit']),
