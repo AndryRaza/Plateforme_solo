@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['connexion'])) {
 
         foreach ($list_members as $id => $value) {
             if ($_POST['user'] === $value['name'] and $_POST['pass']=== $value['password']) {
-                $_SESSION['user'] = $_POST['user'];
+                $_SESSION['user'] =$value['name'];
                 $_SESSION['money'] = $value['money'];
             }
         }

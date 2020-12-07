@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
     if (isset($_FILES['image_modifie']['name'])) {
 
         $produit = json_decode(file_get_contents('../data/card.json'), true); //On ouvre le fichier json et on stock le tableau qu'il renvoie 
-        $dossier = 'D:\Formation\Plateforme_solo\assets\\';
+        $dossier = 'assets/';
         $fichier = basename($_FILES['image_modifie']['name']);
         $taille_maxi = 1000000;
         $taille = filesize($_FILES['image_modifie']['tmp_name']);

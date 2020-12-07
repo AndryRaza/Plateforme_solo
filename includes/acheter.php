@@ -6,10 +6,18 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['acheter'])) {
     if ($_SESSION['user'] != '') {
         $liste_membre =  json_decode(file_get_contents('../data/membre.json'), true);
-        $id_membre = array_search($_SESSION['user'], $liste_membre);  //recherche de l'utilisateur dans la base de donnée et récupérer son index 
+        $id_membre = -1;
+        $j = $_POST['id_produit']; //On récupère l'index du produit cliqué
+        $produit = json_decode(file_get_contents('../data/card.json'), true); //On ouvre le fichier contenant les infos des produits
+
+        foreach($liste_membre as $key => $value){
+            if ($_SESSION['user'] === $value['name']) {
+                $id_membre = $key;
+            }
+        }
 
         if ($id_membre >= 0) {
-            if ($liste_membre[$id_membre]['money'] != 0) {
+            if ($liste_membre[$id_membre]['money'] != 0 and $liste_membre[$id_membre]['money'] > $produit[$j]['prix_clic'] * 0.01) {
                 $j = $_POST['id_produit']; //On récupère l'index du produit cliqué
                 $produit = json_decode(file_get_contents('../data/card.json'), true); //On ouvre le fichier contenant les infos des produits
 

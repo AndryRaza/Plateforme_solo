@@ -111,6 +111,7 @@ if (!isset($_SESSION['enchere_impossible'])) {
     <header class="container-fluid  text-white d-flex">
 
         <h1 class="justify-self-center w-100 text-center my-auto">Plateforme d'enchères</h1>
+      
     </header>
 
     <section class="container-fluid" id="ecran_card">
@@ -119,6 +120,7 @@ if (!isset($_SESSION['enchere_impossible'])) {
                 <?php if ($_SESSION['debite']) {
                         echo '<p class="text-center">Vous avez été débité de ' . $_SESSION['debite_prix'] . '€ </p>';
                         $_SESSION['debite'] = false;
+                        $_SESSION['debite_prix'] = 0 ;
                     } ?>
                  <?php if ($_SESSION['enchere_impossible']) {
                         echo '<p class="text-center">Vous n\'avez pu de sous. </p>';

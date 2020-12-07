@@ -7,7 +7,7 @@
 require 'classes/card.class.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
-    $dossier = 'D:\Formation\Plateforme_solo\assets\\';
+    $dossier = 'assets/';
     $fichier = basename($_FILES['image_produit']['name']);
     $taille_maxi = 1000000;
     $taille = filesize($_FILES['image_produit']['tmp_name']);
@@ -20,6 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
 
     if ($taille > $taille_maxi) {
         $erreur = 'Le fichier est trop gros...';
+    }
+
+    if ($_FILES['image_produit']['name'] === ' '){
+        $erreur = 'Nom de l\'image incorrect';
+    }
+
+    if (stristr($fichier, '<') != FALSE){
+        $erreur = 'Nom de l\'image incorrect';
     }
 
     if (!isset($erreur)) {
