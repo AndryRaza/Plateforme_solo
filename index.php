@@ -50,9 +50,12 @@ if (!isset($_SESSION['enchere_impossible'])) {
         { ?>
             <form class="co pt-3" action="includes/connexion.php" method="POST">
                 <div class="form-group d-flex">
-                    <input type="text" class="form-control mr-2" name="user" id="user" placeholder="Nom d'utilisateur" required pattern="[a-zA-Z]+">
-                    <input type="password" class="form-control mr-2" name="pass" id="pass" placeholder="Mot de passe" required pattern="[a-zA-Z]+">
+                    <input type="text" class="form-control mr-2" name="user" id="user" placeholder="Nom d'utilisateur" required pattern="[a-zA-Z 0-9 ]+">
+                    <input type="password" class="form-control mr-2" name="pass" id="pass" placeholder="Mot de passe" required pattern="[a-zA-Z 0-9 ]+">
                     <input type="submit" class="btn h-50" name="connexion" id="connexion" value="Se connecter">
+                </div>
+                <div>
+                <a class="text-dark ml-1" href="pages/formulaire_inscription.html">S'inscrire</a>
                 </div>
             </form>
         <?php }
