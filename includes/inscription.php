@@ -17,5 +17,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['inscription'])) {
 
     array_push($liste_client,$new_client);
     file_put_contents('../data/membre.json', json_encode($liste_client));
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
