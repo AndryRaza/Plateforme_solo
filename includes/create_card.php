@@ -50,6 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
         $fichier = 'no-image.png';
     }
 
+    
+
     $new_card = new Card(   //On crée un nouvel instance Card
         htmlspecialchars($_POST['nom_produit']),
         htmlspecialchars($_POST['description_produit']),
