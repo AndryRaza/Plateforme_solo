@@ -25,6 +25,10 @@ if (!isset($_SESSION['enchere_impossible'])) {
     $_SESSION['enchere_impossible'] = false;
 }
 
+if (!isset($_SESSION['inscription'])) {
+    $_SESSION['inscription'] = false;
+}
+
 ?>
 
 <head>
@@ -129,6 +133,12 @@ if (!isset($_SESSION['enchere_impossible'])) {
                         echo '<p class="text-center">Vous n\'avez pu de sous. </p>';
                         $_SESSION['enchere_impossible'] = false;
                     } ?>
+                <?php
+                    if ($_SESSION['inscription']){
+                        echo '<p class="text-center" style="color:red;font-size:20px;">Inscription réussie !</p>';
+                        $_SESSION['inscription'] = false;
+                    }
+                ?>
                 <div class="row row-cols-md-4 row-cols-1 d-flex justify-content-center">
                     <?php include 'includes/client.php'; ?>
 

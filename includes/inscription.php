@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['inscription'])) {
 
@@ -17,5 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['inscription'])) {
 
     array_push($liste_client,$new_client);
     file_put_contents('../data/membre.json', json_encode($liste_client));
+    $_SESSION['inscription'] = true;
     header('Location: ../index.php');
+}
+else {
+    header('Location: ../pages/formulaire_inscription.php');
 }

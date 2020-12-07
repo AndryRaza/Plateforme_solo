@@ -7,9 +7,9 @@ session_start(); //On ouvre une session pour pouvoir stocker une variable pour s
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['connexion'])) {
 
     $login = htmlspecialchars($_POST['user']);
-    $pass = htmlspecialchars($_POST['pass']);
+    $pass = hash('md5',htmlspecialchars($_POST['pass']));
 
-    if ($login === 'admin' and $pass === 'admin') {
+    if ($login === 'admin' and $pass === hash('md5','admin')) {
         $_SESSION['admin'] = true; //Si le nom de l'utilisateur et le mdp sont bons, on restera connecté en mode admin
         $_SESSION['user'] = '';
         $_SESSION['money'] = 0;
