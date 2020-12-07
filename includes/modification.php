@@ -48,12 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
         $fichier = 'no-image.png';
     }
 
-    $produit[$j]['image'] = $fichier; //On modifie le nom de l'image du produit dans notre fichier json
+ 
 
     $j =  $_POST['id_produit_modif']; //On récupère la place du produit dans notre fichier json pour pouvoir ensuite modifier ses caractéristiques
 
     $produit[$j]['nom'] = htmlspecialchars($_POST['nom_modifie']); //On modifie le nom
     $produit[$j]['description'] = htmlspecialchars($_POST['description_modifie']); //On modifie la description
+    $produit[$j]['image'] = $fichier; //On modifie le nom de l'image du produit dans notre fichier json
     $produit[$j]['price'] = $_POST['prix_modifie']; //On modifie son prix s'il le souhaite
     $produit[$j]['price_up'] = $_POST['aug_prix_modifie']; //On modifie de combien le prix de l'enchère sera augmenté
     $produit[$j]['time_up'] = $_POST['aug_duree_modifie']; //On modifie de combien le temps de l'enchère sera augmenté
