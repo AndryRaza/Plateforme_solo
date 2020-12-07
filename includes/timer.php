@@ -9,7 +9,7 @@ if ($h < 10) {$h_txt = '0'.$h;} else {$h_txt = $h;} //Si les heures sont inféri
 if ($m < 10) {$m_txt = '0'.$m;} else {$m_txt = $m;} //De même pour les minutes
 if ($s < 10) {$s_txt = '0'.$s;} else {$s_txt = $s;} //Et les secondes
 
-if ($time === 0){
+if ($time <= 0){
     echo 'OFFRE EXPIREE'; //Si le timer arrive à 0, l'enchère est expirée
 }
 else {

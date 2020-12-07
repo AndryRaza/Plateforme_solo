@@ -59,7 +59,7 @@ if (!isset($_SESSION['inscription'])) {
                     <input type="submit" class="btn h-50" name="connexion" id="connexion" value="Se connecter">
                 </div>
                 <div>
-                <a class="text-dark ml-1" href="pages/formulaire_inscription.html">S'inscrire</a>
+                <p> Pas de compte ? <a class="text-dark ml-1" href="pages/formulaire_inscription.html">S'inscrire</a> </p>
                 </div>
             </form>
         <?php }

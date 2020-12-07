@@ -22,12 +22,13 @@ if (!empty($liste_produit)) { //Si la liste n'est pas vide, on va afficher chacu
 
 
                     <p class="card-text text-center"style="height:80px;overflow:hidden;"><?= $value['description'] ?></p>
-
+                    <?php 
+                    if ($time > 0) { ?>
                     <form action="includes/acheter.php" method="POST">
                         <input type="hidden" name="id_produit" id="id_produit" value="<?= $id ?>">
                         <input class="btn w-100" name="acheter" type="submit" value="Acheter">
                     </form>
-
+                    <?php } ?>
                 </div>
             </div>
 <?php }
