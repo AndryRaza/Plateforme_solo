@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
         file_put_contents('../data/card.json', json_encode($produit)); //On "traduit" la nouvelle liste en json puis on l'enregistre dans le fichier json
         header('Location: ../index.php#card_' . $j); //On redirige l'utilisateur sur l'enchère modifiée
     }
+    else { echo 'Modification échouée' ;}
 
     /***************************Partie pour désactiver une carte ***************************/
     if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['desactivate'])) {
