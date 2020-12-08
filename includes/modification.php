@@ -74,10 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['maj'])) {
         $produit[$j]['nom'] = htmlspecialchars($_POST['nom_modifie']); //On modifie le nom
         $produit[$j]['description'] = htmlspecialchars($_POST['description_modifie']); //On modifie la description
         $produit[$j]['image'] = $fichier; //On modifie le nom de l'image du produit dans notre fichier json
-        $produit[$j]['price'] = $_POST['prix_modifie']; //On modifie son prix s'il le souhaite
-        $produit[$j]['price_up'] = $_POST['aug_prix_modifie']; //On modifie de combien le prix de l'enchère sera augmenté
-        $produit[$j]['time_up'] = $_POST['aug_duree_modifie']; //On modifie de combien le temps de l'enchère sera augmenté
-        $produit[$j]['prix_clic'] = $_POST['prix_clic_modifie']; //On modifie le prix du clic
+        $produit[$j]['price'] = (int)$_POST['prix_modifie']; //On modifie son prix s'il le souhaite
+        $produit[$j]['price_up'] = (int)$_POST['aug_prix_modifie']; //On modifie de combien le prix de l'enchère sera augmenté
+        $produit[$j]['time_up'] = (int)$_POST['aug_duree_modifie']; //On modifie de combien le temps de l'enchère sera augmenté
+        $produit[$j]['prix_clic'] =(int) $_POST['prix_clic_modifie']; //On modifie le prix du clic
         file_put_contents('../data/card.json', json_encode($produit)); //On "traduit" la nouvelle liste en json puis on l'enregistre dans le fichier json
         header('Location: ../index.php#card_' . $j); //On redirige l'utilisateur sur l'enchère modifiée
     }

@@ -72,13 +72,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add'])) {
             htmlspecialchars($_POST['nom_produit']),
             htmlspecialchars($_POST['description_produit']),
             $fichier,
-            $_POST['prix_produit'],
-            $_POST['heure_produit'],
-            $_POST['minute_produit'],
-            $_POST['seconde_produit'],
-            $_POST['aug_prix'],
-            $_POST['aug_duree'],
-            $_POST['prix_clic'],
+          (int)$_POST['prix_produit'],
+           (int) $_POST['heure_produit'],
+          (int)  $_POST['minute_produit'],
+           (int) $_POST['seconde_produit'],
+           (int) $_POST['aug_prix'],
+          (int)  $_POST['aug_duree'],
+          (int)  $_POST['prix_clic'],
             true
         );
 
